@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ujinie AI Consulting | AI Delivery Governance for GCCs & IT Companies</title>
+<meta name="description" content="Ujinie AI Consulting helps GCCs and IT companies fix broken AI program delivery. 20 years experience. Bangalore, India."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:     #0D1B2A;
+    --navy2:    #112236;
+    --blue:     #1A56DB;
+    --accent:   #F97316;
+    --accent2:  #FDBA74;
+    --light:    #F8FAFC;
+    --grey:     #64748B;
+    --divider:  #E2E8F0;
+    --white:    #FFFFFF;
+    --card-bg:  #F1F5F9;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6%; height: 68px;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 18px; color: white;
+  }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 17px; color: white;
+    letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent2); }
+  .nav-cta {
+    background: var(--accent); color: white !important;
+    padding: 9px 22px; border-radius: 6px;
+    font-weight: 600 !important; font-size: 13px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #ea6c10 !important; color: white !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 100px 6% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hero-glow {
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; bottom: -150px; left: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,86,219,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; max-width: 720px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3);
+    color: var(--accent2); padding: 6px 16px; border-radius: 100px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5.5vw, 68px);
+    font-weight: 900; color: white; line-height: 1.08;
+    letter-spacing: -0.02em; margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--accent);
+    position: relative;
+  }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,0.6);
+    line-height: 1.7; max-width: 560px; margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px;
+  }
+  .btn-primary {
+    background: var(--accent); color: white;
+    padding: 14px 32px; border-radius: 8px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 24px rgba(249,115,22,0.35);
+  }
+  .btn-primary:hover {
+    background: #ea6c10; transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(249,115,22,0.4);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.06); color: white;
+    padding: 14px 32px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1); transform: translateY(-2px);
+  }
+  .hero-trust {
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .hero-trust-label {
+    font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .trust-logos {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .trust-logo {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.55); padding: 6px 14px; border-radius: 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--accent);
+    padding: 20px 6%;
+    display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+  }
+  .stat-item {
+    padding: 8px 48px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.25);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 900; color: white; display: block;
+  }
+  .stat-label {
+    font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.8);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 96px 6%; }
+  .section-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 14px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px); font-weight: 900;
+    line-height: 1.12; color: var(--navy); margin-bottom: 20px;
+  }
+  .section-sub {
+    font-size: 17px; color: var(--grey); line-height: 1.7;
+    max-width: 580px; font-weight: 300;
+  }
+  .section-header { margin-bottom: 56px; }
+
+  /* ── PROBLEM ── */
+  .problem { background: var(--light); }
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: center;
+  }
+  .problem-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .problem-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px 24px; background: white; border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    animation: fadeUp 0.6s ease both;
+  }
+  .problem-icon {
+    width: 36px; height: 36px; min-width: 36px; border-radius: 8px;
+    background: rgba(249,115,22,0.1); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .problem-text strong {
+    display: block; font-size: 15px; font-weight: 600;
+    color: var(--navy); margin-bottom: 4px;
+  }
+  .problem-text span { font-size: 13px; color: var(--grey); line-height: 1.5; }
+  .problem-right { padding-left: 24px; }
+  .big-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px); font-weight: 700;
+    color: var(--navy); line-height: 1.4; margin-bottom: 24px;
+  }
+  .big-quote em { font-style: italic; color: var(--accent); }
+
+  /* ── SERVICES ── */
+  .services { background: var(--white); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .service-card {
+    border: 1px solid var(--divider); border-radius: 16px;
+    padding: 36px 32px; position: relative; overflow: hidden;
+    transition: all 0.3s; cursor: default;
+    background: white;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(13,27,42,0.12);
+    border-color: var(--accent);
+  }
+  .service-card.featured {
+    background: var(--navy); border-color: var(--navy);
+  }
+  .service-card.featured * { color: white !important; }
+  .service-card.featured .service-price { color: var(--accent2) !important; }
+  .service-card.featured .service-tag { background: rgba(249,115,22,0.2) !important; color: var(--accent2) !important; }
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 900;
+    color: rgba(13,27,42,0.06); position: absolute;
+    top: 16px; right: 24px; line-height: 1;
+  }
+  .service-card.featured .service-num { color: rgba(255,255,255,0.06); }
+  .service-tag {
+    display: inline-block; background: rgba(249,115,22,0.1);
+    color: var(--accent); padding: 4px 12px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--navy);
+    margin-bottom: 12px; line-height: 1.2;
+  }
+  .service-desc {
+    font-size: 14px; color: var(--grey); line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .service-features {
+    list-style: none; margin-bottom: 28px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .service-features li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--grey); line-height: 1.5;
+  }
+  .service-features li::before {
+    content: '✓'; color: var(--accent); font-weight: 700;
+    font-size: 13px; margin-top: 1px; min-width: 14px;
+  }
+  .service-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 900; color: var(--navy);
+  }
+  .service-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 400; color: var(--grey);
+  }
+
+  /* ── 6 PILLARS ── */
+  .pillars { background: var(--navy); }
+  .pillars .section-title { color: white; }
+  .pillars .section-sub { color: rgba(255,255,255,0.5); }
+  .pillars .section-tag { color: var(--accent2); }
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    border-radius: 16px; overflow: hidden;
+  }
+  .pillar-card {
+    padding: 32px 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.3s;
+  }
+  .pillar-card:hover { background: rgba(255,255,255,0.08); }
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 900; color: var(--accent);
+    line-height: 1; margin-bottom: 12px;
+  }
+  .pillar-name {
+    font-size: 16px; font-weight: 600; color: white;
+    margin-bottom: 10px;
+  }
+  .pillar-desc {
+    font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6;
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--light); }
+  .process-steps {
+    display: flex; flex-direction: column; gap: 0;
+    max-width: 760px; margin: 0 auto; position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    left: 28px; top: 48px; bottom: 48px; width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--blue));
+  }
+  .process-step {
+    display: flex; gap: 32px; align-items: flex-start;
+    padding: 32px 0; position: relative;
+  }
+  .step-num {
+    width: 56px; height: 56px; min-width: 56px; border-radius: 50%;
+    background: var(--navy); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 20px; position: relative; z-index: 1;
+    border: 3px solid var(--accent);
+  }
+  .step-content { padding-top: 8px; }
+  .step-title {
+    font-size: 18px; font-weight: 700; color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 14px; color: var(--grey); line-height: 1.7;
+  }
+  .step-time {
+    display: inline-block; background: rgba(249,115,22,0.1);
+    color: var(--accent); padding: 3px 10px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; margin-top: 8px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f50 100%);
+    padding: 100px 6%; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .cta-content { position: relative; max-width: 680px; margin: 0 auto; }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px); font-weight: 900;
+    color: white; margin-bottom: 16px; line-height: 1.15;
+  }
+  .cta-sub {
+    font-size: 17px; color: rgba(255,255,255,0.55);
+    margin-bottom: 40px; line-height: 1.7; font-weight: 300;
+  }
+  .cta-actions {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .cta-contact {
+    display: flex; gap: 32px; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cta-contact-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; color: rgba(255,255,255,0.5);
+  }
+  .cta-contact-item a {
+    color: var(--accent2); text-decoration: none; font-weight: 500;
+  }
+  .cta-contact-item a:hover { color: white; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060f18; padding: 40px 6%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .footer-logo-mark {
+    width: 30px; height: 30px; border-radius: 6px;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 14px; color: white;
+  }
+  .footer-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 15px; color: rgba(255,255,255,0.7);
+  }
+  .footer-tagline {
+    font-size: 13px; color: rgba(255,255,255,0.3);
+    font-style: italic;
+  }
+  .footer-links {
+    display: flex; gap: 24px; list-style: none;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.35); font-size: 13px;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .problem-grid,
+    .services-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { gap: 0; }
+    .stat-item { padding: 8px 24px; }
+  }
+  @media (max-width: 600px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; }
+    .cta-actions { flex-direction: column; align-items: center; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .stat-item:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">U</div>
+    <span class="nav-logo-text">Ujinie AI Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pillars">Our Framework</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact" class="nav-cta">Book Free Audit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Now Accepting New Clients — for this and next Quarter</div>
+    <h1>AI Programs That<br/><em>Actually Deliver.</em></h1>
+    <p class="hero-sub">
+      Your AI project is not failing because the technology is wrong.
+      It is failing because the delivery is broken. We fix that —
+      for GCCs and IT companies across Bangalore and India.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Book Free AI Audit →
+      </a>
+      <a href="#services" class="btn-secondary">
+        View Services
+      </a>
+    </div>
+    <div class="hero-trust">
+      <span class="hero-trust-label">Experience from</span>
+      <div class="trust-logos">
+        <span class="trust-logo">Unisys</span>
+        <span class="trust-logo">Goldman Sachs</span>
+        <span class="trust-logo">Microsoft</span>
+        <span class="trust-logo">Dell</span>
+        <span class="trust-logo">VMware</span>
+        <span class="trust-logo">Ampcome</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">20</span>
+    <span class="stat-label">Years Experience</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">6</span>
+    <span class="stat-label">Pillar Framework</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Delivery Focus</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">Free</span>
+    <span class="stat-label">First AI Audit</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="problem-grid">
+    <div class="fade-up">
+      <span class="section-tag">The Problem</span>
+      <h2 class="section-title">Why AI Projects Fail</h2>
+      <ul class="problem-list">
+        <li class="problem-item">
+          <div class="problem-icon">⚠</div>
+          <div class="problem-text">
+            <strong>No Delivery Ownership</strong>
+            <span>Nobody is truly accountable when AI programs go off track.</span>
+          </div>
+        </li>
+        <li class="problem-item">
+          <div class="problem-icon">📋</div>
+          <div class="problem-text">
+            <strong>Unrealistic Roadmaps</strong>
+            <span>Timelines set by sales, not engineering. Roadmaps that change every sprint.</span>
+          </div>
+        </li>
+        <li class="problem-item">
+          <div class="problem-icon">🔴</div>
+          <div class="problem-text">
+            <strong>Hidden Risks</strong>
+            <span>No risk register. Problems only discovered when they become crises.</span>
+          </div>
+        </li>
+        <li class="problem-item">
+          <div class="problem-icon">🤝</div>
+          <div class="problem-text">
+            <strong>Business-Tech Misalignment</strong>
+            <span>AI team and business speaking different languages. Constant re-work.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="problem-right fade-up">
+      <p class="big-quote">
+        "It is never the model<br/>that fails. It is always<br/><em>the delivery.</em>"
+      </p>
+      <p style="font-size:15px;color:var(--grey);line-height:1.8;font-weight:300;">
+        After 20+ years of experience across Goldman Sachs, VMware,
+        Microsoft, CGI and Ampcome — one pattern is unmistakable.
+        The technology almost always works. The governance, process,
+        and accountability structures almost always do not.
+      </p>
+      <br/>
+      <p style="font-size:15px;color:var(--grey);line-height:1.8;font-weight:300;">
+        That gap is exactly what Ujinie AI Consulting was built to close.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade-up">
+    <span class="section-tag">Services</span>
+    <h2 class="section-title">How We Help</h2>
+    <p class="section-sub">
+      Three focused engagements designed to fix AI delivery
+      at every stage — from diagnosis to full transformation.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <span class="service-tag">Entry Point</span>
+      <h3 class="service-name">AI Delivery Audit</h3>
+      <p class="service-desc">
+        A structured 2-week assessment across our 6-pillar framework.
+        Find out exactly why your AI program is delayed — and get a
+        prioritised fix roadmap.
+      </p>
+      <ul class="service-features">
+        <li>6-pillar assessment across your entire AI program</li>
+        <li>Stakeholder interviews and document review</li>
+        <li>Scored findings report with RAG status</li>
+        <li>Prioritised fix roadmap — quick wins to strategic</li>
+      </ul>
+      <div class="service-price">₹1.5 – 2L <span>/ engagement</span></div>
+    </div>
+    <div class="service-card featured fade-up">
+      <div class="service-num">02</div>
+      <span class="service-tag">Most Popular</span>
+      <h3 class="service-name">Fractional AI Program Manager</h3>
+      <p class="service-desc">
+        Embedded 2–3 days per week in your team. Hands-on delivery
+        governance, stakeholder management, and program reporting —
+        without the cost of a full-time hire.
+      </p>
+      <ul class="service-features">
+        <li>Delivery governance and risk management</li>
+        <li>Sprint facilitation and blocker resolution</li>
+        <li>Weekly executive status reporting</li>
+        <li>Stakeholder communication management</li>
+      </ul>
+      <div class="service-price">₹1.5 – 3L <span>/ month</span></div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">03</div>
+      <span class="service-tag">Transformation</span>
+      <h3 class="service-name">AI Governance Framework Setup</h3>
+      <p class="service-desc">
+        A 4–6 week engagement to build your AI delivery operating model
+        from scratch — frameworks, dashboards, templates, and team
+        training included.
+      </p>
+      <ul class="service-features">
+        <li>Governance framework design and documentation</li>
+        <li>Risk register and roadmap templates</li>
+        <li>Executive dashboard setup</li>
+        <li>Team training and full handover</li>
+      </ul>
+      <div class="service-price">₹3 – 5L <span>/ engagement</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="section-header fade-up">
+    <span class="section-tag">Our Framework</span>
+    <h2 class="section-title">The 6-Pillar AI Delivery Model</h2>
+    <p class="section-sub">
+      Every audit and engagement is built on our proprietary framework —
+      six dimensions that determine whether an AI program succeeds or fails.
+    </p>
+  </div>
+  <div class="pillars-grid fade-up">
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <div class="pillar-name">Program Governance</div>
+      <div class="pillar-desc">Accountability structures, decision rights, and escalation paths that keep AI programs on track.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <div class="pillar-name">Roadmap & Planning</div>
+      <div class="pillar-desc">Realistic, capacity-based roadmaps with dependency mapping and structured prioritisation.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <div class="pillar-name">Risk Management</div>
+      <div class="pillar-desc">Proactive risk identification, tracking, and mitigation before risks become delivery crises.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">04</div>
+      <div class="pillar-name">Stakeholder Alignment</div>
+      <div class="pillar-desc">Business and AI teams aligned on goals, requirements, progress and success criteria.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">05</div>
+      <div class="pillar-name">Delivery Execution</div>
+      <div class="pillar-desc">Sprint-to-sprint health — velocity, blocker resolution, ceremony quality, and team rhythm.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">06</div>
+      <div class="pillar-name">Reporting & Visibility</div>
+      <div class="pillar-desc">Real-time, honest leadership visibility into AI program health — not just green dashboards.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header fade-up" style="text-align:center;">
+    <span class="section-tag">How It Works</span>
+    <h2 class="section-title">From First Call to Fixed Delivery</h2>
+    <p class="section-sub" style="margin:0 auto;">
+      A clear, no-surprise process from the moment you reach out
+      to the moment your AI program is back on track.
+    </p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step fade-up">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Free 30-Minute Discovery Call</div>
+        <div class="step-desc">We start with a no-obligation conversation. You tell me about your AI program, your team, and your biggest delivery challenge. I tell you honestly whether and how I can help.</div>
+        <span class="step-time">Day 1</span>
+      </div>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">2-Week AI Delivery Audit</div>
+        <div class="step-desc">I assess your program across all 6 pillars — interviews, document reviews, meeting observations. No disruption to your team's work. Just clear-eyed diagnosis.</div>
+        <span class="step-time">Week 1 – 2</span>
+      </div>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Findings Presentation</div>
+        <div class="step-desc">A scored report across all 6 pillars. Top 3 findings with business impact. A prioritised fix roadmap — quick wins you can act on this week, and strategic changes for the next quarter.</div>
+        <span class="step-time">End of Week 2</span>
+      </div>
+    </div>
+    <div class="process-step fade-up">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Engagement or Referral</div>
+        <div class="step-desc">If the problems warrant it, we discuss a follow-on engagement. If not — you walk away with a clear fix roadmap at no cost. Either way, you leave better informed than you arrived.</div>
+        <span class="step-time">Week 3 onwards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-content fade-up">
+    <h2 class="cta-title">Is Your AI Program Behind Schedule?</h2>
+    <p class="cta-sub">
+      Book a free 30-minute AI Delivery Assessment. No pitch.
+      No obligation. Just an honest conversation about where
+      your program stands and what it would take to fix it.
+    </p>
+    <div class="cta-actions">
+      <div style="width:100%;max-width:620px;margin:0 auto;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.3);">
+          <div style="background:var(--accent);padding:16px 28px;display:flex;align-items:center;gap:12px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:white;opacity:0.9;animation:pulse 2s infinite;flex-shrink:0;"></div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:white;">Book Your Free AI Audit</span>
+          </div>
+          <iframe
+            src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__uCcxFlUM0lPNlgwN1ZOOFY4Q1VNUjZaRVZLVEExRC4u&embed=true"
+            width="100%"
+            height="820"
+            frameborder="0"
+            marginwidth="0"
+            marginheight="0"
+            style="display:block;border:none;background:white;min-height:820px;"
+            allowfullscreen
+            scrolling="no"
+            title="Customer Enquiry – Ujinie AI Consulting">
+          </iframe>
+          <div style="padding:12px 28px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
+            <span style="font-size:12px;color:rgba(255,255,255,0.35);">🔒 Your information is secure and will only be used to schedule your free audit.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-item">
+        ✉ <a href="mailto:shekar@ujinie.com">shekar@ujinie.com</a>
+      </div>
+      <div class="cta-contact-item">
+        📞 <a href="tel:+919482888908">+91 9482888908 / +91 7019594532</a>
+      </div>
+      <div class="cta-contact-item">
+        🔗 <a href="https://www.linkedin.com/in/chandrashekar-n-aa57903a4/" target="_blank">LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark">U</div>
+    <span class="footer-logo-text">Ujinie AI Consulting</span>
+  </div>
+  <span class="footer-tagline">Rooted in Values. Driven by Delivery.</span>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="mailto:shekar@ujinie.com">shekar@ujinie.com</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Audit form submission
+  function submitAuditForm() {
+    const fields = [
+      { id: 'audit-name', label: 'Name' },
+      { id: 'audit-email', label: 'Email Address' },
+      { id: 'audit-phone', label: 'Phone Number' },
+      { id: 'audit-designation', label: 'Designation' },
+      { id: 'audit-company', label: 'Company' }
+    ];
+    const msg = document.getElementById('audit-msg');
+    for (const f of fields) {
+      const el = document.getElementById(f.id);
+      if (!el.value.trim()) {
+        msg.style.display = 'block';
+        msg.style.background = 'rgba(220,50,50,0.15)';
+        msg.style.color = '#fca5a5';
+        msg.textContent = f.label + ' is required.';
+        el.focus();
+        return;
+      }
+    }
+    const emailEl = document.getElementById('audit-email');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+      msg.style.display = 'block';
+      msg.style.background = 'rgba(220,50,50,0.15)';
+      msg.style.color = '#fca5a5';
+      msg.textContent = 'Please enter a valid email address.';
+      emailEl.focus();
+      return;
+    }
+    const name = document.getElementById('audit-name').value.trim();
+    const email = document.getElementById('audit-email').value.trim();
+    const phone = document.getElementById('audit-phone').value.trim();
+    const designation = document.getElementById('audit-designation').value.trim();
+    const company = document.getElementById('audit-company').value.trim();
+    const subject = encodeURIComponent('Free AI Audit Request – ' + company);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Designation: ' + designation + '\n' +
+      'Company: ' + company + '\n\n' +
+      'I would like to book a Free AI Delivery Audit.'
+    );
+    window.location.href = 'mailto:shekar@ujinie.com?subject=' + subject + '&body=' + body;
+    msg.style.display = 'block';
+    msg.style.background = 'rgba(34,197,94,0.15)';
+    msg.style.color = '#86efac';
+    msg.textContent = 'Thank you! Your audit request is being submitted.';
+  }
+
+  // Input focus styles
+  document.querySelectorAll('#audit-form-wrap input').forEach(inp => {
+    inp.addEventListener('focus', () => inp.style.borderColor = 'rgba(249,115,22,0.6)');
+    inp.addEventListener('blur', () => inp.style.borderColor = 'rgba(255,255,255,0.15)');
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
