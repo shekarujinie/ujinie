@@ -419,6 +419,114 @@
   }
   .cta-contact-item a:hover { color: white; }
 
+  .audit-form-shell {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+    text-align: left;
+  }
+  .audit-form-head {
+    background: var(--accent);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .audit-form-head-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.9;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+  .audit-form-head-text {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: white;
+  }
+  .audit-form-body {
+    background: rgba(6,15,24,0.65);
+    padding: 24px;
+  }
+  .audit-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .audit-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .audit-form-field.full {
+    grid-column: 1 / -1;
+  }
+  .audit-form-field label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.72);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .audit-form-field input,
+  .audit-form-field select,
+  .audit-form-field textarea {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: white;
+    border-radius: 8px;
+    padding: 11px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .audit-form-field textarea {
+    min-height: 92px;
+    resize: vertical;
+  }
+  .audit-form-field input::placeholder,
+  .audit-form-field textarea::placeholder {
+    color: rgba(255,255,255,0.45);
+  }
+  .audit-form-field input:focus,
+  .audit-form-field select:focus,
+  .audit-form-field textarea:focus {
+    outline: none;
+    border-color: rgba(249,115,22,0.7);
+    background: rgba(255,255,255,0.12);
+  }
+  .audit-form-field select option {
+    color: var(--navy);
+    background: var(--white);
+  }
+  .audit-form-field select option[value=""] {
+    color: var(--grey);
+  }
+  .audit-form-submit {
+    margin-top: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  .audit-form-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.5;
+  }
+  .audit-form-status {
+    margin-top: 14px;
+    display: none;
+    font-size: 13px;
+    border-radius: 8px;
+    padding: 10px 12px;
+    line-height: 1.5;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: #060f18; padding: 40px 6%;
@@ -478,6 +586,7 @@
     .cta-actions { flex-direction: column; align-items: center; }
     .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
     .stat-item:last-child { border-bottom: none; }
+    .audit-form-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -848,25 +957,62 @@
     </p>
     <div class="cta-actions">
       <div style="width:100%;max-width:620px;margin:0 auto;">
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.3);">
-          <div style="background:var(--accent);padding:16px 28px;display:flex;align-items:center;gap:12px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:white;opacity:0.9;animation:pulse 2s infinite;flex-shrink:0;"></div>
-            <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:white;">Book Your Free AI Audit</span>
+        <div class="audit-form-shell">
+          <div class="audit-form-head">
+            <div class="audit-form-head-dot"></div>
+            <span class="audit-form-head-text">Book Your Free AI Audit</span>
           </div>
-          <iframe
-            src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__uCcxFlUM0lPNlgwN1ZOOFY4Q1VNUjZaRVZLVEExRC4u&embed=true"
-            width="100%"
-            height="820"
-            frameborder="0"
-            marginwidth="0"
-            marginheight="0"
-            style="display:block;border:none;background:white;min-height:820px;"
-            allowfullscreen
-            scrolling="no"
-            title="Customer Enquiry – Ujinie AI Consulting">
-          </iframe>
+          <div class="audit-form-body">
+            <form id="audit-form-wrap" novalidate>
+              <div class="audit-form-grid">
+                <div class="audit-form-field">
+                  <label for="audit-name">Name *</label>
+                  <input id="audit-name" name="name" type="text" placeholder="Your full name" required/>
+                </div>
+                <div class="audit-form-field">
+                  <label for="audit-email">Email *</label>
+                  <input id="audit-email" name="email" type="email" placeholder="you@company.com" required/>
+                </div>
+                <div class="audit-form-field">
+                  <label for="audit-phone">Phone *</label>
+                  <input id="audit-phone" name="phone" type="tel" placeholder="+91..." required/>
+                </div>
+                <div class="audit-form-field">
+                  <label for="audit-company">Company *</label>
+                  <input id="audit-company" name="company" type="text" placeholder="Company name" required/>
+                </div>
+                <div class="audit-form-field">
+                  <label for="audit-designation">Designation *</label>
+                  <input id="audit-designation" name="designation" type="text" placeholder="Your role" required/>
+                </div>
+                <div class="audit-form-field">
+                  <label for="audit-company-size">Company Size</label>
+                  <select id="audit-company-size" name="companySize">
+                    <option value="">Select company size</option>
+                    <option value="1-10">1-10</option>
+                    <option value="11-50">11-50</option>
+                    <option value="51-200">51-200</option>
+                    <option value="201-500">201-500</option>
+                    <option value="501-1000">501-1000</option>
+                    <option value="1000+">1000+</option>
+                  </select>
+                </div>
+                <div class="audit-form-field full">
+                  <label for="audit-ai-challenge">AI Challenge</label>
+                  <textarea id="audit-ai-challenge" name="aiChallenge" placeholder="What is your biggest AI delivery challenge right now?"></textarea>
+                </div>
+                <div class="audit-form-field full">
+                  <label for="audit-message">Message</label>
+                  <textarea id="audit-message" name="message" placeholder="Any additional context you'd like to share"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary audit-form-submit">Submit Audit Request -></button>
+              <p class="audit-form-note">Data fields map directly to your lead sheet columns: Timestamp, Name, Email, Phone, Company, Designation, Company Size, AI Challenge, Message.</p>
+              <div id="audit-msg" class="audit-form-status"></div>
+            </form>
+          </div>
           <div style="padding:12px 28px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
-            <span style="font-size:12px;color:rgba(255,255,255,0.35);">🔒 Your information is secure and will only be used to schedule your free audit.</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.35);">Your information is secure and will only be used to schedule your free audit.</span>
           </div>
         </div>
       </div>
@@ -900,62 +1046,135 @@
 </footer>
 
 <script>
-  // Audit form submission
-  function submitAuditForm() {
-    const fields = [
-      { id: 'audit-name', label: 'Name' },
-      { id: 'audit-email', label: 'Email Address' },
-      { id: 'audit-phone', label: 'Phone Number' },
-      { id: 'audit-designation', label: 'Designation' },
-      { id: 'audit-company', label: 'Company' }
-    ];
+  // Replace this URL with your deployed Google Apps Script Web App URL.
+  // Example: https://script.google.com/macros/s/AKfycb.../exec
+  const GOOGLE_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzbNNI8f0sU9ZZNrwT28gAf9spHiSp8iwk50Svukw3kRiR0OP4jOz0iKCsjp8uv7wG-fw/exec';
+
+  function setAuditStatus(message, type) {
     const msg = document.getElementById('audit-msg');
-    for (const f of fields) {
-      const el = document.getElementById(f.id);
-      if (!el.value.trim()) {
-        msg.style.display = 'block';
-        msg.style.background = 'rgba(220,50,50,0.15)';
-        msg.style.color = '#fca5a5';
-        msg.textContent = f.label + ' is required.';
-        el.focus();
-        return;
-      }
-    }
-    const emailEl = document.getElementById('audit-email');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
-      msg.style.display = 'block';
+    msg.style.display = 'block';
+    if (type === 'error') {
       msg.style.background = 'rgba(220,50,50,0.15)';
       msg.style.color = '#fca5a5';
-      msg.textContent = 'Please enter a valid email address.';
-      emailEl.focus();
-      return;
+    } else {
+      msg.style.background = 'rgba(34,197,94,0.15)';
+      msg.style.color = '#86efac';
     }
-    const name = document.getElementById('audit-name').value.trim();
-    const email = document.getElementById('audit-email').value.trim();
-    const phone = document.getElementById('audit-phone').value.trim();
-    const designation = document.getElementById('audit-designation').value.trim();
-    const company = document.getElementById('audit-company').value.trim();
-    const subject = encodeURIComponent('Free AI Audit Request – ' + company);
-    const body = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      'Phone: ' + phone + '\n' +
-      'Designation: ' + designation + '\n' +
-      'Company: ' + company + '\n\n' +
-      'I would like to book a Free AI Delivery Audit.'
-    );
-    window.location.href = 'mailto:shekar@ujinie.com?subject=' + subject + '&body=' + body;
-    msg.style.display = 'block';
-    msg.style.background = 'rgba(34,197,94,0.15)';
-    msg.style.color = '#86efac';
-    msg.textContent = 'Thank you! Your audit request is being submitted.';
+    msg.textContent = message;
   }
 
-  // Input focus styles
-  document.querySelectorAll('#audit-form-wrap input').forEach(inp => {
-    inp.addEventListener('focus', () => inp.style.borderColor = 'rgba(249,115,22,0.6)');
-    inp.addEventListener('blur', () => inp.style.borderColor = 'rgba(255,255,255,0.15)');
+  function postLeadToGoogleSheet(payload) {
+    const iframeName = 'audit-submit-target';
+    let iframe = document.getElementById(iframeName);
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.name = iframeName;
+      iframe.id = iframeName;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+
+    const postForm = document.createElement('form');
+    postForm.method = 'POST';
+    postForm.action = GOOGLE_SCRIPT_WEB_APP_URL;
+    postForm.target = iframeName;
+    postForm.style.display = 'none';
+
+    Object.entries(payload).forEach(([key, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value || '';
+      postForm.appendChild(input);
+    });
+
+    document.body.appendChild(postForm);
+    postForm.submit();
+    document.body.removeChild(postForm);
+  }
+
+  function buildLeadPayload() {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const screenResolution = `${window.screen.width}x${window.screen.height}`;
+    const viewport = `${window.innerWidth}x${window.innerHeight}`;
+
+    return {
+      timestamp: new Date().toISOString(),
+      name: document.getElementById('audit-name').value.trim(),
+      email: document.getElementById('audit-email').value.trim(),
+      phone: document.getElementById('audit-phone').value.trim(),
+      company: document.getElementById('audit-company').value.trim(),
+      designation: document.getElementById('audit-designation').value.trim(),
+      companySize: document.getElementById('audit-company-size').value.trim(),
+      aiChallenge: document.getElementById('audit-ai-challenge').value.trim(),
+      message: document.getElementById('audit-message').value.trim(),
+      pageUrl: window.location.href,
+      referrer: document.referrer || '',
+      userAgent: navigator.userAgent || '',
+      language: navigator.language || '',
+      timezone,
+      screenResolution,
+      viewport,
+      source: 'website-audit-form'
+    };
+  }
+
+  function validateLeadPayload(payload) {
+    const required = [
+      { key: 'name', label: 'Name', id: 'audit-name' },
+      { key: 'email', label: 'Email', id: 'audit-email' },
+      { key: 'phone', label: 'Phone', id: 'audit-phone' },
+      { key: 'company', label: 'Company', id: 'audit-company' },
+      { key: 'designation', label: 'Designation', id: 'audit-designation' }
+    ];
+
+    for (const field of required) {
+      if (!payload[field.key]) {
+        setAuditStatus(field.label + ' is required.', 'error');
+        document.getElementById(field.id).focus();
+        return false;
+      }
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      setAuditStatus('Please enter a valid email address.', 'error');
+      document.getElementById('audit-email').focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  const auditForm = document.getElementById('audit-form-wrap');
+  auditForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const payload = buildLeadPayload();
+    if (!validateLeadPayload(payload)) {
+      return;
+    }
+
+    const submitBtn = auditForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      if (!GOOGLE_SCRIPT_WEB_APP_URL) {
+        throw new Error('Missing Google Apps Script Web App URL');
+      }
+      postLeadToGoogleSheet(payload);
+      setAuditStatus('Thank you. Your audit request has been submitted successfully.', 'success');
+      auditForm.reset();
+    } catch (error) {
+      setAuditStatus('Submission failed. Please verify the Google Script Web App URL and deployment access, then try again.', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      submitBtn.textContent = 'Submit Audit Request ->';
+    }
   });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
